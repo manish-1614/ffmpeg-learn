@@ -1,0 +1,209 @@
+{
+  "tools": {
+    "ffmpeg": {
+      "name": "ffmpeg",
+      "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
+      "docs": "The main FFmpeg executable for encoding, decoding, transcoding, and streaming."
+    },
+    "ffprobe": {
+      "name": "ffprobe",
+      "description": "A simple multimedia stream analyzer. Used to gather information about media files.",
+      "docs": "Examines media files and outputs technical metadata (codecs, streams, format, duration, etc.)"
+    },
+    "ffplay": {
+      "name": "ffplay",
+      "description": "A simple and portable media player using FFmpeg libraries.",
+      "docs": "Plays media files directly from the command line."
+    }
+  },
+  "ffprobe_options": {
+    "-v": {
+      "name": "-v",
+      "description": "Set logging level (verbosity).",
+      "values": {
+        "quiet": "Show nothing at all.",
+        "panic": "Only show fatal errors.",
+        "fatal": "Only show fatal errors.",
+        "error": "Show all errors (default for most tools). Suppresses info/warning messages.",
+        "warning": "Show all warnings and errors.",
+        "info": "Show informative messages.",
+        "verbose": "Same as info.",
+        "debug": "Show everything, including debugging information."
+      }
+    },
+    "-show_format": {
+      "name": "-show_format",
+      "description": "Show format (container) information.",
+      "docs": "Outputs details about the container format: duration, size, bitrate, metadata tags."
+    },
+    "-show_streams": {
+      "name": "-show_streams",
+      "description": "Show stream information.",
+      "docs": "Outputs details for each stream (video, audio, subtitles): codec, resolution, framerate, sample rate, etc."
+    },
+    "-show_stream": {
+      "name": "-show_stream",
+      "description": "Alias for -show_streams (common typo).",
+      "docs": "Same as -show_streams. Use -show_streams for the correct option name."
+    },
+    "-show_chapters": {
+      "name": "-show_chapters",
+      "description": "Show chapter information.",
+      "docs": "Outputs chapter markers if the container supports them."
+    },
+    "-select_streams": {
+      "name": "-select_streams",
+      "description": "Select which streams to show or process.",
+      "values": {
+        "v": "Select video stream(s) only.",
+        "a": "Select audio stream(s) only.",
+        "s": "Select subtitle stream(s) only.",
+        "v:0": "Select first video stream.",
+        "a:0": "Select first audio stream."
+      },
+      "docs": "Filters streams before -show_entries. Use 'v' for video, 'a' for audio, 's' for subtitles. Add :0, :1 for stream index."
+    },
+    "-show_entries": {
+      "name": "-show_entries",
+      "description": "Show only specific entries (fields) from format or streams.",
+      "docs": "Limits output to selected keys. Format: stream=key1,key2 or format=key1. Common keys: codec_name, width, height, duration, bit_rate."
+    },
+    "-print_format": {
+      "name": "-print_format",
+      "description": "Set the output format.",
+      "values": {
+        "default": "Default format. Can add options like noprint_wrappers=1:nokey=1.",
+        "csv": "Comma-separated values.",
+        "ini": "INI format.",
+        "json": "JSON format (human-readable).",
+        "flat": "Flat format.",
+        "xml": "XML format."
+      },
+      "formatOptions": {
+        "noprint_wrappers": "Remove section wrappers (e.g. [STREAM] / [/STREAM]). Use =1 to enable.",
+        "nokey": "Output only values, not keys. Use =1 to enable. Produces compact output like 'h264' instead of 'codec_name=h264'."
+      }
+    }
+  },
+  "ffplay_options": {
+    "-x": {
+      "name": "-x",
+      "description": "Set video display width in pixels.",
+      "docs": "Forces the video window to a specific width. Use with -y for fixed dimensions."
+    },
+    "-y": {
+      "name": "-y",
+      "description": "Set video display height in pixels.",
+      "docs": "Forces the video window to a specific height. Use with -x for fixed dimensions."
+    },
+    "-noborder": {
+      "name": "-noborder",
+      "description": "Remove window border and decorations.",
+      "docs": "Displays video in a borderless window for a cleaner look."
+    },
+    "-top": {
+      "name": "-top",
+      "description": "Set window position from top of screen (in pixels).",
+      "docs": "Positions the video window vertically. Use 0 to align with top of screen."
+    },
+    "-left": {
+      "name": "-left",
+      "description": "Set window position from left edge of screen (in pixels).",
+      "docs": "Positions the video window horizontally. Use 0 to align with left edge of screen."
+    },
+    "-fs": {
+      "name": "-fs",
+      "description": "Full screen mode.",
+      "docs": "Plays video in full screen. Overrides -x and -y when active."
+    },
+    "-an": {
+      "name": "-an",
+      "description": "Disable audio playback.",
+      "docs": "Mutes audio. Video plays with no sound. (Also used in ffmpeg to skip audio in output.)"
+    },
+    "-vn": {
+      "name": "-vn",
+      "description": "Disable video playback.",
+      "docs": "Hides video. Audio-only mode - useful for listening without video display. (Also used in ffmpeg to skip video in output.)"
+    },
+    "-showmode": {
+      "name": "-showmode",
+      "description": "Set audio/video display mode.",
+      "values": {
+        "waves": "Display audio as waveform.",
+        "rdft": "Show RDFT frequency spectrum.",
+        "color": "Color spectrum."
+      },
+      "docs": "Changes how ffplay renders output. 'waves' shows audio waveform; 'rdft' shows frequency spectrum."
+    },
+    "-loop": {
+      "name": "-loop",
+      "description": "Loop playback.",
+      "values": {
+        "0": "Loop forever (infinite).",
+        "1": "Loop once (play twice total).",
+        "-1": "Loop forever (alternative)."
+      },
+      "docs": "Number of times to loop. 0 or -1 = infinite loop."
+    }
+  },
+  "ffmpeg_options": {
+    "-i": {
+      "name": "-i",
+      "description": "Input file or URL.",
+      "docs": "Specifies the input source. Can be a local file path or remote URL (http, https, rtsp, etc.)."
+    },
+    "-c": {
+      "name": "-c",
+      "description": "Codec selection (alias for -codec).",
+      "docs": "Select encoder/decoder. Examples: -c:v libx264 (video), -c:a aac (audio), -c copy (stream copy, no re-encoding)."
+    },
+    "-codec": {
+      "name": "-codec",
+      "description": "Codec selection.",
+      "docs": "Same as -c. Use :v for video, :a for audio, :s for subtitles."
+    },
+    "-f": {
+      "name": "-f",
+      "description": "Force input/output format.",
+      "docs": "Specifies the format (container) to use. Examples: mp4, mkv, webm, null (for discarding)."
+    },
+    "-t": {
+      "name": "-t",
+      "description": "Limit recording or transcode duration.",
+      "docs": "Stop writing after this many seconds. Can use HH:MM:SS format."
+    },
+    "-ss": {
+      "name": "-ss",
+      "description": "Seek to position before processing.",
+      "docs": "Start reading from this timestamp. Use before -i for input seeking (fast), after for output seeking (accurate)."
+    },
+    "-to": {
+      "name": "-to",
+      "description": "Stop at specified position.",
+      "docs": "Stop writing at this timestamp (HH:MM:SS or seconds)."
+    },
+    "-vn": {
+      "name": "-vn",
+      "description": "Disable video recording.",
+      "docs": "No video stream in output (audio only)."
+    },
+    "-an": {
+      "name": "-an",
+      "description": "Disable audio recording.",
+      "docs": "No audio stream in output (video only)."
+    }
+  },
+  "input_types": {
+    "url": {
+      "pattern": "^(https?|rtsp|rtmp|file)://",
+      "description": "Remote URL or stream source.",
+      "docs": "Network location of the media. Supports HTTP, HTTPS, RTSP, RTMP, and other protocols."
+    },
+    "path": {
+      "pattern": "^[./]|^[A-Za-z]:",
+      "description": "Local file path.",
+      "docs": "Path to a media file on the local filesystem."
+    }
+  }
+}
