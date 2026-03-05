@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { parseCommand } from './utils/commandParser'
 import { loadCommands, addCommand, removeCommand, updateCommand, reorderCommand } from './utils/storage'
+import { loadNotes } from './utils/notesStorage'
 import { filterCommands } from './utils/commandUtils'
 import AddCommandForm from './components/AddCommandForm'
 import CommandLibrary from './components/CommandLibrary'
+import NotesSection from './components/NotesSection'
 import SidePanel from './components/SidePanel'
 import VideoReferences from './components/VideoReferences'
 import ConfirmDialog from './components/ConfirmDialog'
@@ -11,7 +13,9 @@ import './App.css'
 
 function App() {
   const [commands, setCommands] = useState([])
+  const [notes, setNotes] = useState([])
   const [selectedId, setSelectedId] = useState(null)
+  const [selectedNoteId, setSelectedNoteId] = useState(null)
   const [sidePanelOpen, setSidePanelOpen] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
   const [removeConfirmId, setRemoveConfirmId] = useState(null)
@@ -19,6 +23,7 @@ function App() {
 
   useEffect(() => {
     setCommands(loadCommands())
+    setNotes(loadNotes())
   }, [])
 
   useEffect(() => {
@@ -82,6 +87,12 @@ function App() {
             {addSuccess && <p className="add-success">✓ Command added! Expand it below to add your notes.</p>}
             <AddCommandForm onAdd={handleAddCommand} />
           </section>
+
+          <NotesSection
+            notes={notes}
+            selectedNoteId={selectedNoteId}
+            onSelectNote={setSelectedNoteId}
+          />
 
           <section className="section commands-section">
             <h2>Command Library</h2>

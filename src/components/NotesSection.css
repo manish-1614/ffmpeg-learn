@@ -1,0 +1,90 @@
+.notes-section-hint {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.note-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.note-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.note-card-header:hover {
+  background: var(--bg-elevated);
+}
+
+.note-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.note-card-toggle {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.note-card-body {
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.note-content {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.note-content .note-h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 1.25rem 0 0.5rem;
+}
+
+.note-content .note-h3:first-child {
+  margin-top: 0;
+}
+
+.note-content .note-h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 1rem 0 0.35rem;
+}
+
+.note-content .note-p,
+.note-content .note-strong {
+  margin: 0.5rem 0;
+  color: var(--text);
+}
+
+.note-content .note-strong {
+  font-weight: 600;
+}
+
+.note-content .note-ul {
+  margin: 0.5rem 0;
+  padding-left: 1.25rem;
+}
+
+.note-content .note-li {
+  margin: 0.25rem 0;
+  color: var(--text-muted);
+}
